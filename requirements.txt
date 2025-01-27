@@ -1,0 +1,13 @@
+PyPDF2
+pdfplumber
+PyMuPDF
+pdf2image
+pytesseract
+Pillow
+torch
+numpy
+scipy
+gTTS
+pyttsx3
+pygame
+tqdm

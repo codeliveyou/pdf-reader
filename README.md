@@ -185,4 +185,3 @@ pip install -r requirements.txt
 
 ---
 Made with ❤️ by [Codeliveyou]
-```

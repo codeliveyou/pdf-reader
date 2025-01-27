@@ -24,8 +24,8 @@ A powerful Python application that converts PDF documents into high-quality audi
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/codeliveyou/pdf-to-audio-converter.git
-cd pdf-to-audio-converter
+git clone https://github.com/codeliveyou/pdf-reader.git
+cd pdf-reader
 ```
 
 2. Create a virtual environment (recommended):
@@ -83,7 +83,7 @@ Adjust the text chunk size (1000-5000 characters) from the sidebar to optimize a
 
 ### Project Structure
 ```
-pdf-to-audio-converter/
+pdf-reader/
 ├── app.py                 # Main Streamlit web application
 ├── pdf_to_audio.py        # Core conversion logic
 ├── requirements.txt       # Project dependencies
@@ -143,7 +143,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Codeliveyou - codetankstn@gmail.com
 
-Project Link: [https://github.com/codeliveyou/pdf-to-audio-converter](https://github.com/codeliveyou/pdf-to-audio-converter)
+Project Link: [https://github.com/codeliveyou/pdf-reader](https://github.com/codeliveyou/pdf-reader)
 
 ## 🐛 Known Issues
 

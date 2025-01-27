@@ -11,3 +11,4 @@ gTTS
 pyttsx3
 pygame
 tqdm
+streamlit

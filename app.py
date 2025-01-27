@@ -143,27 +143,38 @@ def main():
                         st.session_state.conversion_done = True
 
             if st.session_state.conversion_done and st.session_state.audio_files:
-                # Create ZIP file of all audio files
-                zip_path = "audio_files.zip"
-                create_zip_of_audio_files(st.session_state.audio_files, zip_path)
-                
-                # Download all button
-                with open(zip_path, "rb") as f:
-                    bytes = f.read()
-                    st.download_button(
-                        label="📥 Download All Audio Files (ZIP)",
-                        data=bytes,
-                        file_name="audio_files.zip",
-                        mime="application/zip",
-                        use_container_width=True
-                    )
-
                 # Display individual audio players and download buttons
                 for i, audio_file in enumerate(st.session_state.audio_files):
                     st.markdown(f"### Part {i+1}")
-                    st.markdown(converter.get_audio_player_html(audio_file), unsafe_allow_html=True)
-                    st.markdown(converter.get_download_link(audio_file, f"audio_part_{i+1}.mp3"), 
-                              unsafe_allow_html=True)
+                    
+                    # Read and display audio
+                    with open(audio_file, 'rb') as f:
+                        audio_bytes = f.read()
+                    st.audio(audio_bytes, format='audio/mp3')
+                    
+                    # Download button for individual file
+                    st.download_button(
+                        label=f"Download Part {i+1}",
+                        data=audio_bytes,
+                        file_name=f"audio_part_{i+1}.mp3",
+                        mime="audio/mpeg",
+                        key=f"download_button_{i}"
+                    )
+                
+                # Create and offer ZIP download if multiple files
+                if len(st.session_state.audio_files) > 1:
+                    zip_path = "audio_files.zip"
+                    create_zip_of_audio_files(st.session_state.audio_files, zip_path)
+                    
+                    with open(zip_path, "rb") as f:
+                        st.download_button(
+                            label="📥 Download All Audio Files (ZIP)",
+                            data=f.read(),
+                            file_name="audio_files.zip",
+                            mime="application/zip",
+                            use_container_width=True,
+                            key="download_all"
+                        )
 
         # Cleanup
         if os.path.exists(pdf_path):
